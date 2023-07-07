@@ -1,9 +1,10 @@
-const ROCK = 0;
-const PAPER = 1;
-const SCISSORS = 2;
+
 //play round
 //get random computer choice
 function playRound(userChoice) {
+    const ROCK = 0;
+    const PAPER = 1;
+    const SCISSORS = 2;
     let computerChoice = Math.floor(Math.random() * 2);
 
 //get user choice
@@ -44,7 +45,7 @@ function game() {
     let winner;
 
     for (let i = 0; i < 5; i++) {
-        let userChoice = prompt("Rock, paper, scissors?").toLowerCase;
+        let userChoice = prompt("Rock, paper, scissors?").toLowerCase();
         winner = playRound(userChoice);
         if (winner == "user"){
             user++;
