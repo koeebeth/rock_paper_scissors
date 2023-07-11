@@ -1,10 +1,20 @@
 const ROCK = 0;
 const PAPER = 1;
 const SCISSORS = 2;
-let user = 0;
-let computer = 0;
-const buttons = document.querySelectorAll('button');
-buttons.forEach((button) => button.addEventListener('click', game));
+let user;
+let computer;
+const buttons = document.querySelectorAll('button.weapon');
+const outcome = document.querySelector('.outcome');
+
+function playGame(){
+    user = 0;
+    computer = 0;
+    document.querySelector('span.player').textContent = '0';
+    document.querySelector('span.computer').textContent = '0';
+    if (outcome.firstChild) outcome.removeChild(outcome.firstChild);
+    buttons.forEach((button) => button.addEventListener('click', game));
+}
+
 //play round
 
 function playRound(userChoice, computerChoice) {
@@ -40,7 +50,6 @@ function playRound(userChoice, computerChoice) {
 
 function game(e) {
     //insert computer choice into div and delete previous one
-    let outcome = document.querySelector('.outcome');
     if (outcome.firstChild) outcome.removeChild(outcome.firstChild);
     
     let divider = document.createElement('div');
@@ -91,15 +100,16 @@ function game(e) {
         winner = (computer == 5) ? 'Computer' : 'User';
         winnerAnnounce = document.createElement('h2');
         winnerAnnounce.textContent = `${winner} won!`;
+        restart = document.createElement('button');
+        restart.textContent = 'Restart';
+        restart.addEventListener('click', playGame);
         divider.appendChild(winnerAnnounce);
+        divider.appendChild(restart);
         buttons.forEach((button) => button.removeEventListener('click', game));
     }
 }
 
-let userChoice;
-let computerChoice;
-//get user choice on click
-buttons.forEach((button) => button.addEventListener('click', game));
+playGame();
 
 
 
