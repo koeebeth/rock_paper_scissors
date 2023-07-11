@@ -1,11 +1,9 @@
-
+const ROCK = 0;
+const PAPER = 1;
+const SCISSORS = 2;
 //play round
-//get random computer choice
-function playRound(userChoice) {
-    const ROCK = 0;
-    const PAPER = 1;
-    const SCISSORS = 2;
-    let computerChoice = Math.floor(Math.random() * 2);
+
+function playRound(userChoice, computerChoice) {
 
 //get user choice
     switch(userChoice){
@@ -38,34 +36,48 @@ function playRound(userChoice) {
 }
 
 
-//play round 5 times
-function game() {
-    let user = 0;
-    let computer = 0;
-    let winner;
+function playGame(){
+    user = 0;
+    computer = 0;
+    let userChoice;
+    let computerChoice;
+    //get user choice on click
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => button.addEventListener('click', function (e) {
+        //insert computer choice into div and delete previous one
+        let outcome = document.querySelector('.outcome');
+        if (outcome.firstChild) outcome.removeChild(outcome.firstChild);
+        
+        let divider = document.createElement('div');
+        divider.classList.add('choice_display');
+        let cmpChoiceDisplay = document.createElement('h3');
+        let image = document.createElement('img');
+        //play round
+        userChoice = e.currentTarget.value;
+        computerChoice = Math.floor(Math.random() * 3);
+        winner = playRound(userChoice, computerChoice);
 
-    for (let i = 0; i < 5; i++) {
-        let userChoice = prompt("Rock, paper, scissors?").toLowerCase();
-        winner = playRound(userChoice);
-        if (winner == "user"){
-            user++;
+        //display computer choice
+        if (computerChoice == ROCK){
+            image.src = './images/rock.png';
+            cmpChoiceDisplay.textContent = 'Rock!';
         }
-        else if (winner == "computer"){
-            computer++;
+        else if (computerChoice == PAPER){
+            image.src = './images/paper.png';
+            cmpChoiceDisplay.textContent = 'Paper!';
         }
-        console.log(`Winner: ${winner}`)
-    }
-    
-    if (user == computer){
-        return console.log("Draw!");
-    }
-    else if (user > computer){
-        return console.log("User wins!");
-    }
-    else {
-        return console.log("Computer wins!");
-    }
+        else if (computerChoice == SCISSORS){
+            image.src = './images/scissors.png';
+            cmpChoiceDisplay.textContent = 'Scissors!';
+        }
+        divider.appendChild(image);
+        divider.appendChild(cmpChoiceDisplay);
+        outcome.appendChild(divider);
 
-    //print the winner
+
+        
+    }));
+
 }
 
+playGame();

@@ -4,8 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="container">
+    <h1>Rock, Paper, Scissors?</h1>
+    <div class="game-window">
+        
+        <div class="choice user">
+            <h2>Choose your weapon:</h2>
+            <div class="weapons">
+                <div class="rock">
+                    <button value="rock" class="rock" >
+                        <img src="./images/rock.png">
+                        <h3>Rock</h3>
+                    </button>     
+                </div>
+                <div class="paper">
+                    <button value="paper" class="paper">
+                        <img src="./images/paper.png">
+                        <h3>Paper</h3>
+                    </button>
+                </div>
+                <div class="scissors">
+                    <button value="scissors" class="scissors">
+                        <img src="./images/scissors.png">
+                        <h3>Scissors</h3>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="score">
+            <h4>Player: <span class="player">0</span></h4>
+            <h4>Computer: <span class="computer">0</span></h4>
+        </div>
+        <div class="choice computer">
+            <h2>Computer throws...</h2>
+            <div class="outcome"></div>
+        </div>
+        
+    </div>
+</div>
 </body>
 </html>
