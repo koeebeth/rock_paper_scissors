@@ -28,6 +28,12 @@ div.game-window {
     padding: 30px;
 }
 
+.choice.user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 h1, h2 {
     text-align: center;
 }
@@ -81,6 +87,7 @@ div.score {
 .choice.computer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .choice_display {
